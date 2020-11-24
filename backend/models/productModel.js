@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
-import Product from "./../../frontend/src/components/Product";
+import User from "./userModel.js";
+
 const reviewSchema = mongoose.Schema(
   {
     name: { type: String, required: true },
