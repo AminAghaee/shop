@@ -100,8 +100,9 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
     const { data } = await axios.get(`/api/users/${id}`, config);
 
     dispatch({ type: USER_DETAILS_SUCCESS, payload: data });
-
-    localStorage.setItem("userInfo", JSON.stringify(data));
+    if (userInfo._id === "profile") {
+      localStorage.setItem("userInfo", JSON.stringify(data));
+    }
   } catch (error) {
     dispatch({
       type: USER_DETAILS_FAIL,
@@ -182,7 +183,7 @@ export const deleteUser = (id) => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.token}`,
       },
     };
-    const { data } = await axios.delete(`/api/users/${id}`, config);
+    await axios.delete(`/api/users/${id}`, config);
     dispatch({ type: USER_DELETE_SUCCESS });
   } catch (error) {
     dispatch({
