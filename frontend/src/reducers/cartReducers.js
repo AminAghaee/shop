@@ -39,14 +39,14 @@ export const cartReducer = (
       };
 
     case CART_SAVE_SHIPPING_ADDRESS:
-      const shippingAddress = action.payload;
+      const shippingAddress = action.payload.data;
       return {
         ...state,
         shippingAddress,
       };
 
     case CART_SAVE_PAYMENT_METHOD:
-      const paymentMethod = action.payload;
+      const paymentMethod = action.payload.data;
       return {
         ...state,
         paymentMethod,
